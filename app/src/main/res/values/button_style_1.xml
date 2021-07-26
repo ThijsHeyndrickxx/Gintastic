@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button_style_1">
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">#deb12a</item>
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:background">@drawable/rounded_buttons</item>
+        <item name="android:layout_margin">11dp</item>
+    </style>
+</resources>
