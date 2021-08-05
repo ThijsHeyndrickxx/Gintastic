@@ -14,4 +14,6 @@
     <string name="main_activity_fav_button">My favourites</string>
     <string name="main_activity_all_button">All gin tonics</string>
     <string name="log_out_button">Log out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

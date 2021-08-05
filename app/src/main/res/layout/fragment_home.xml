@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_main_activity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/main_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_head"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingTop="@dimen/main_head_padding"
+                android:paddingBottom="@dimen/main_head_padding"
+                android:text="@string/main_activity_head"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="@dimen/head"
+                app:layout_constraintBottom_toTopOf="@+id/linear_layout"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/main_button_logout"
+                style="@style/button_style_logout"
+                android:layout_width="@dimen/button_width_small"
+                android:layout_height="@dimen/button_height_small"
+                android:text="@string/log_out_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_layout" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/main_button_new"
+                    style="@style/button_style_1"
+                    android:layout_width="@dimen/button_width_medium"
+                    android:layout_height="@dimen/button_height_medium"
+                    android:background="@drawable/rounded_buttons"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="@string/main_activity_add_button" />
+
+                <Button
+                    android:id="@+id/main_button_all"
+                    style="@style/button_style_1"
+                    android:layout_width="@dimen/button_width_medium"
+                    android:layout_height="@dimen/button_height_medium"
+                    android:text="@string/main_activity_all_button" />
+
+                <Button
+                    android:id="@+id/main_button_fav"
+                    style="@style/button_style_1"
+                    android:layout_width="@dimen/button_width_medium"
+                    android:layout_height="@dimen/button_height_medium"
+                    android:text="@string/main_activity_fav_button" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
