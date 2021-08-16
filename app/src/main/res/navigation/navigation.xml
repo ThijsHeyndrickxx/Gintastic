@@ -11,12 +11,11 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_allCocktailsFragment"
-            app:destination="@id/allCocktailsFragment" />
+            android:id="@+id/action_homeFragment_to_allGinTonicsFragment"
+            app:destination="@id/allGinTonicsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/allCocktailsFragment"
-        android:name="com.example.android.gintastic.AllCocktailsFragment"
-        android:label="fragment_all_cocktails"
-        tools:layout="@layout/fragment_all_cocktails" />
+        android:id="@+id/allGinTonicsFragment"
+        android:name="com.example.android.gintastic.allgintonics.AllGinTonicsFragment"
+        android:label="AllGinTonicsFragment" />
 </navigation>

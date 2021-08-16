@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
-import com.example.android.gintastic.databinding.FragmentAllCocktailsBinding
+import com.example.android.gintastic.databinding.FragmentAllGinTonicsBinding
 import com.example.android.gintastic.databinding.FragmentHomeBinding
 
 
@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
             inflater, R.layout.fragment_home, container, false
         )
         binding.mainButtonAll.setOnClickListener {view: View ->
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_allCocktailsFragment)
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_allGinTonicsFragment)
 
         }
 
