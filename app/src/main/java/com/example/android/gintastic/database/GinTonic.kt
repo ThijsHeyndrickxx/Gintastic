@@ -12,5 +12,4 @@ data class GinTonic (
 
     @ColumnInfo(name = "gin_tonic_name")
     var name: String = ""
-
 )

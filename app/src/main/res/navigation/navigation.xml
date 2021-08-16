@@ -13,9 +13,17 @@
         <action
             android:id="@+id/action_homeFragment_to_allGinTonicsFragment"
             app:destination="@id/allGinTonicsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addGinTonicFragment"
+            app:destination="@id/addGinTonicsFragment" />
     </fragment>
     <fragment
         android:id="@+id/allGinTonicsFragment"
         android:name="com.example.android.gintastic.allgintonics.AllGinTonicsFragment"
         android:label="AllGinTonicsFragment" />
+    <fragment
+        android:id="@+id/addGinTonicsFragment"
+        android:name="com.example.android.gintastic.addgintonic.AddGinTonicFragment"
+        android:label="fragment_add_gin_tonic"
+        tools:layout="@layout/fragment_add_gin_tonic" />
 </navigation>

@@ -21,12 +21,17 @@ class HomeFragment : Fragment() {
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false
         )
-        binding.mainButtonAll.setOnClickListener {view: View ->
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_allGinTonicsFragment)
-
-        }
+        setBindings(binding)
 
         return binding.root
+    }
+    private fun setBindings(binding: FragmentHomeBinding){
+        binding.mainButtonAll.setOnClickListener {view: View ->
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_allGinTonicsFragment)
+        }
+        binding.mainButtonNew.setOnClickListener {view: View ->
+            Navigation.findNavController(view).navigate((R.id.action_homeFragment_to_addGinTonicFragment))
+        }
     }
 
 }

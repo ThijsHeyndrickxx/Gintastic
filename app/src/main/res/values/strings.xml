@@ -16,4 +16,6 @@
     <string name="log_out_button">Log out</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_gt_title">Welcome to the Gin tonic overview page.</string>
+    <string name="all_gt_sub_title">Here you can find all gin tonics added by the community. Feel free to add new gin tonics in the "add" menu.</string>
 </resources>
