@@ -21,7 +21,7 @@ interface GinTonicDao {
     fun clear()
 
     @Query("SELECT * FROM GinTonic ORDER BY ginTonicId DESC")
-    fun getAllGinTonics(): LiveData<List<GinTonic>>
+    fun getAllGinTonics(): List<GinTonic>
 
     @Query("SELECT * FROM GinTonic ORDER BY ginTonicId DESC LIMIT 1")
     fun getNewestGinTonic(): GinTonic?

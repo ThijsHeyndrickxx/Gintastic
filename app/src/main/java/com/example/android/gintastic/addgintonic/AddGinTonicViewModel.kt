@@ -1,6 +1,8 @@
 package com.example.android.gintastic.addgintonic
 
 import android.app.Application
+import android.content.Intent
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,6 +36,8 @@ class AddGinTonicViewModel (val database: GinTonicDao, application: Application)
         }
 
     }
+
+
 
 
 

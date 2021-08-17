@@ -20,10 +20,23 @@
     <fragment
         android:id="@+id/allGinTonicsFragment"
         android:name="com.example.android.gintastic.allgintonics.AllGinTonicsFragment"
-        android:label="AllGinTonicsFragment" />
+        android:label="AllGinTonicsFragment" >
+        <action
+            android:id="@+id/action_allGinTonicsFragment_to_detailedGinTonicFragment"
+            app:destination="@id/detailedGinTonicFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addGinTonicsFragment"
         android:name="com.example.android.gintastic.addgintonic.AddGinTonicFragment"
         android:label="fragment_add_gin_tonic"
         tools:layout="@layout/fragment_add_gin_tonic" />
+    <fragment
+        android:id="@+id/detailedGinTonicFragment"
+        android:name="com.example.android.gintastic.detailedgintonic.DetailedGinTonicFragment"
+        android:label="detailed_gin_tonic_fragment"
+        tools:layout="@layout/fragment_detailed_gin_tonic" >
+        <argument
+            android:name="ginTonicId"
+            app:argType="long" />
+    </fragment>
 </navigation>

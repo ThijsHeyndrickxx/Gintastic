@@ -10,7 +10,7 @@ import kotlinx.coroutines.*
 
 class AllGinTonicsViewModel (val database: GinTonicDao, application: Application): AndroidViewModel(application)
 {
-    private val ginTonics = database.getAllGinTonics()
+    val ginTonics = MutableLiveData<List<GinTonic?>>()
     val newestGinTonic = MutableLiveData<GinTonic?>()
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -20,14 +20,30 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
         viewModelJob.cancel()
     }
     init{
+        initializeGinTonics()
         initializeNewestGinTonic()
     }
 
+    private fun initializeGinTonics() {
+        uiScope.launch {
+            ginTonics.value = getAllGinTonicsFromDatabase()
+        }
+    }
     private fun initializeNewestGinTonic() {
         uiScope.launch {
             newestGinTonic.value = getNewestGTFromDatabase()
         }
     }
+
+    private suspend fun getAllGinTonicsFromDatabase(): List<GinTonic>? {
+
+        return withContext(Dispatchers.IO) {
+            var ginTonics = database.getAllGinTonics()
+            ginTonics
+        }
+    }
+
+
 
     private suspend fun getNewestGTFromDatabase(): GinTonic? {
 
