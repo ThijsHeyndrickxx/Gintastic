@@ -26,5 +26,10 @@ interface GinTonicDao {
     @Query("SELECT * FROM GinTonic ORDER BY ginTonicId DESC LIMIT 1")
     fun getNewestGinTonic(): GinTonic?
 
+    @Query("SELECT * FROM GinTonic WHERE is_gin_tonic_favourite = 1 ORDER BY ginTonicId DESC")
+    fun getFavouriteGinTonics(): List<GinTonic?>
+
+
+
 
 }

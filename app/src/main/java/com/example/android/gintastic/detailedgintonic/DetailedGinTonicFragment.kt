@@ -1,5 +1,6 @@
 package com.example.android.gintastic.detailedgintonic
 
+import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import com.example.android.gintastic.databinding.FragmentDetailedGinTonicBinding
 
 class DetailedGinTonicFragment : Fragment() {
     private val args: DetailedGinTonicFragmentArgs by navArgs()
+    var isFavouriteChecked: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +32,25 @@ class DetailedGinTonicFragment : Fragment() {
         val detailedGinTonicViewModel = ViewModelProvider(this, viewModelFactory).get(DetailedGinTonicViewModel::class.java)
         binding.detailedGinTonicViewModel = detailedGinTonicViewModel
         binding.setLifecycleOwner(this)
+        setFavouriteToggle(binding, detailedGinTonicViewModel)
         return binding.root
     }
+
+    private fun setFavouriteToggle(binding: FragmentDetailedGinTonicBinding, viewModel: DetailedGinTonicViewModel) {
+        binding.favouriteButton.setOnClickListener{
+            if(isFavouriteChecked){
+                binding.favouriteButton.setImageResource(R.drawable.btn_star_unchecked)
+                viewModel.toggleFavourite(isChecked = true)
+                isFavouriteChecked = false
+            } else{
+                binding.favouriteButton.setImageResource(R.drawable.btn_star_checked)
+                viewModel.toggleFavourite(isChecked = false)
+                isFavouriteChecked = true
+            }
+        }
+
+    }
+
+
 
 }

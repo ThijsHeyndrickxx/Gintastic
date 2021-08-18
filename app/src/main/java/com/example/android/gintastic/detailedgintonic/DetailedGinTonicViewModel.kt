@@ -1,6 +1,7 @@
 package com.example.android.gintastic.detailedgintonic
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.*
 import com.example.android.gintastic.database.GinTonic
 import com.example.android.gintastic.database.GinTonicDao
@@ -20,6 +21,20 @@ class DetailedGinTonicViewModel(val database: GinTonicDao, application: Applicat
         initializeCurrentGinTonic()
     }
 
+    fun toggleFavourite(isChecked: Boolean){
+        uiScope.launch {
+            toggleFavourites(isChecked)
+        }
+    }
+    private suspend fun toggleFavourites(isChecked: Boolean) {
+        withContext(Dispatchers.IO){
+            currentGinTonic.value!!.favourite = !isChecked
+            database.update(currentGinTonic.value!!)
+        }
+
+    }
+
+
     private fun initializeCurrentGinTonic() {
         uiScope.launch {
             currentGinTonic.value = getCurrentGinTonicFromDatabase(ginTonicId)
@@ -34,12 +49,4 @@ class DetailedGinTonicViewModel(val database: GinTonicDao, application: Applicat
 
     }
 
-
-    //todo: Add to favourites
-
-
-
-    companion object{
-        private const val GIN_TONIC_ID = "ginTonicId"
-    }
 }

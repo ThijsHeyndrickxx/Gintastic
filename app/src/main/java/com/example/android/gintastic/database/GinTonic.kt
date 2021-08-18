@@ -11,5 +11,10 @@ data class GinTonic (
     var ginTonicId: Long = 0L,
 
     @ColumnInfo(name = "gin_tonic_name")
-    var name: String = ""
+    var name: String = "",
+
+    @ColumnInfo(name = "is_gin_tonic_favourite")
+    var favourite: Boolean = false
+
+
 )
