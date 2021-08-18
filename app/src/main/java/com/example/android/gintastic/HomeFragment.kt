@@ -30,7 +30,10 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_allGinTonicsFragment)
         }
         binding.mainButtonNew.setOnClickListener {view: View ->
-            Navigation.findNavController(view).navigate((R.id.action_homeFragment_to_addGinTonicFragment))
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_addGinTonicFragment)
+        }
+        binding.mainButtonFav.setOnClickListener {view: View ->
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_favouriteGinTonicsFragment)
         }
     }
 

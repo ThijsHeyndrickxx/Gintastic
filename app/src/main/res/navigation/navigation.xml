@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addGinTonicFragment"
             app:destination="@id/addGinTonicsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteGinTonicsFragment"
+            app:destination="@id/favouriteGinTonicsFragment" />
     </fragment>
     <fragment
         android:id="@+id/allGinTonicsFragment"
@@ -38,5 +41,14 @@
         <argument
             android:name="ginTonicId"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouriteGinTonicsFragment"
+        android:name="com.example.android.gintastic.favouritegintonics.FavouriteGinTonicsFragment"
+        android:label="fragment_favourite_gin_tonics"
+        tools:layout="@layout/fragment_favourite_gin_tonics" >
+        <action
+            android:id="@+id/action_favouriteGinTonicsFragment_to_detailedGinTonicFragment"
+            app:destination="@id/detailedGinTonicFragment" />
     </fragment>
 </navigation>

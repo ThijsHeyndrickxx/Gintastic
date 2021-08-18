@@ -1,16 +1,22 @@
 package com.example.android.gintastic.allgintonics
 
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.findFragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.gintastic.HomeFragmentDirections
 import com.example.android.gintastic.R
 import com.example.android.gintastic.database.GinTonic
 import com.example.android.gintastic.databinding.ListItemGinTonicBinding
+import com.example.android.gintastic.favouritegintonics.FavouriteGinTonicsFragment
+import com.example.android.gintastic.favouritegintonics.FavouriteGinTonicsFragmentDirections
+
 
 class GinTonicAdapter: ListAdapter<GinTonic, RecyclerView.ViewHolder>(GinTonicDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -38,9 +44,22 @@ class GinTonicViewHolder(private val binding: ListItemGinTonicBinding)
     }
 
     private fun navigateToDetailedGinTonic(ginTonic: GinTonic, view: View) {
-        val direction =
-            AllGinTonicsFragmentDirections.actionAllGinTonicsFragmentToDetailedGinTonicFragment(ginTonic.ginTonicId)
-        view.findNavController().navigate(direction)
+
+        var fragment: Fragment = view.findFragment()
+        var string = fragment.toString().substring(0,10).toRegex()
+        string.matches("AllGinToni")
+        if(string.matches("AllGinToni")){
+            var direction = AllGinTonicsFragmentDirections.actionAllGinTonicsFragmentToDetailedGinTonicFragment(ginTonic.ginTonicId)
+            view.findNavController().navigate(direction)
+        }else if(string.matches("FavouriteG")){
+            var direction = FavouriteGinTonicsFragmentDirections.actionFavouriteGinTonicsFragmentToDetailedGinTonicFragment(ginTonic.ginTonicId)
+            view.findNavController().navigate(direction)
+        }
+
+
+
+
+
     }
 
     fun bind(item: GinTonic) {

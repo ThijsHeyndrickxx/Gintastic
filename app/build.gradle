@@ -57,4 +57,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
     kapt "android.arch.persistence.room:compiler:1.1.1"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
 }
