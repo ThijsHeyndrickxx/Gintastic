@@ -14,5 +14,5 @@ interface GinTonicApiService {
      fun getGinTonics(): Call<List<GinTonicProperty>>
 
     @POST("GinTonics")
-    suspend fun addGinTonic(@Body ginTonicProperty: GinTonicProperty)
+     fun addGinTonic(@Body ginTonicProperty: GinTonicProperty): Call<GinTonicProperty>
 }

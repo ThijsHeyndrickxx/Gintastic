@@ -48,7 +48,6 @@ class AddGinTonicFragment : Fragment() {
 
         binding.setLifecycleOwner(this)
 
-
         setTasteList(addGinTonicViewModel, binding)
         setAddButton(addGinTonicViewModel,binding)
 
@@ -63,7 +62,7 @@ class AddGinTonicFragment : Fragment() {
             var description: String = binding.newGinTonicDescription.text.toString()
             var taste: String = binding.spinner.selectedItem.toString()
 
-            if(!valid(name, taste, description)){
+            if(!isValid(name, taste, description)){
 
             } else {
                 val gt = GinTonic()
@@ -77,7 +76,7 @@ class AddGinTonicFragment : Fragment() {
         }
     }
 
-    private fun valid(name: String, taste: String, description: String): Boolean {
+    private fun isValid(name: String, taste: String, description: String): Boolean {
         if(name.isEmpty() || name.isBlank()){
             Toast.makeText(requireActivity(), "Name cannot be blank!", Toast.LENGTH_SHORT).show()
             return false
@@ -101,9 +100,6 @@ class AddGinTonicFragment : Fragment() {
         val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, tasteList)
         binding.spinner.adapter = adapter
         binding.spinner.prompt="Select taste here..."
-
-
-
 
     }
 

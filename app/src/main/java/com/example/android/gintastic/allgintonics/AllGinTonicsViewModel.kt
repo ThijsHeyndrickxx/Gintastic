@@ -18,10 +18,8 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
 {
     // private val _ginTonics = MutableLiveData<List<GinTonic?>>()
     private val _ginTonics = MutableLiveData<List<GinTonic>>()
-
     val ginTonics: LiveData<List<GinTonic>>
         get() = _ginTonics
-
     val newestGinTonic = MutableLiveData<GinTonic?>()
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -37,7 +35,7 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
 
     private fun initializeGinTonics() {
         uiScope.launch {
-            setGinTonicsFromAPI()
+            getGinTonicsFromServer()
         }
     }
     private fun initializeNewestGinTonic() {
@@ -46,18 +44,13 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
         }
     }
 
-    private fun setGinTonicsFromAPI() {
+    private fun getGinTonicsFromServer() {
         RetrofitBuilder.apiService.getGinTonics().enqueue(object: Callback<List<GinTonicProperty>> {
             override fun onResponse(call: Call<List<GinTonicProperty>>, response: Response<List<GinTonicProperty>>) {
                 var properties: List<GinTonicProperty> = response.body()!!
                 var gts = mutableListOf<GinTonic>()
                 properties.forEach{
-                    var gt: GinTonic = GinTonic()
-                    gt.ginTonicId = it.id.toLong()
-                    gt.name = it.name
-                    gt.description = it.description
-                    gt.taste = it.taste
-                    gts.add(gt)
+                    gts.add(GinTonic(it.id.toLong(),it.name,false,it.taste,it.description))
                 }
                 _ginTonics.value = gts
                 cacheGinTonics(gts)
@@ -67,11 +60,9 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
                 _ginTonics.value = database.getAllGinTonics()
             }
         })
-
     }
 
     private fun cacheGinTonics(gts: MutableList<GinTonic>) {
-
         gts.forEach {
             database.insert(it)
         }
