@@ -14,7 +14,13 @@ data class GinTonic (
     var name: String = "",
 
     @ColumnInfo(name = "is_gin_tonic_favourite")
-    var favourite: Boolean = false
+    var favourite: Boolean = false,
+
+    @ColumnInfo(name = "gin_tonic_taste")
+    var taste: String ="",
+
+    @ColumnInfo(name = "gin_tonic_description")
+    var description: String =""
 
 
 )

@@ -13,6 +13,8 @@ import kotlinx.coroutines.*
 class AddGinTonicViewModel (val database: GinTonicDao, application: Application):
     AndroidViewModel(application){
 
+
+
     private var viewModelJob = Job()
 
     override fun onCleared() {
@@ -22,6 +24,9 @@ class AddGinTonicViewModel (val database: GinTonicDao, application: Application)
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
+    fun getTastes(): MutableList<String>{
+        return mutableListOf("","Sweet", "Sour", "Mediterranean","Mint", "Other")
+    }
     fun addGinTonic(ginTonic: GinTonic){
         uiScope.launch {
             add(ginTonic)
