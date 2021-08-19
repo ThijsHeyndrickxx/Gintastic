@@ -4,13 +4,24 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.android.gintastic.network.RetrofitBuilder
 import com.example.android.gintastic.database.GinTonic
 import com.example.android.gintastic.database.GinTonicDao
+import com.example.android.gintastic.database.GinTonicProperty
 import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class AllGinTonicsViewModel (val database: GinTonicDao, application: Application): AndroidViewModel(application)
 {
-    val ginTonics = MutableLiveData<List<GinTonic?>>()
+    // private val _ginTonics = MutableLiveData<List<GinTonic?>>()
+    private val _ginTonics = MutableLiveData<List<GinTonic>>()
+
+    val ginTonics: LiveData<List<GinTonic>>
+        get() = _ginTonics
+
     val newestGinTonic = MutableLiveData<GinTonic?>()
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -26,7 +37,7 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
 
     private fun initializeGinTonics() {
         uiScope.launch {
-            ginTonics.value = getAllGinTonicsFromDatabase()
+            setGinTonicsFromAPI()
         }
     }
     private fun initializeNewestGinTonic() {
@@ -35,14 +46,37 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
         }
     }
 
-    private suspend fun getAllGinTonicsFromDatabase(): List<GinTonic>? {
+    private fun setGinTonicsFromAPI() {
+        RetrofitBuilder.apiService.getGinTonics().enqueue(object: Callback<List<GinTonicProperty>> {
+            override fun onResponse(call: Call<List<GinTonicProperty>>, response: Response<List<GinTonicProperty>>) {
+                var properties: List<GinTonicProperty> = response.body()!!
+                var gts = mutableListOf<GinTonic>()
+                properties.forEach{
+                    var gt: GinTonic = GinTonic()
+                    gt.ginTonicId = it.id.toLong()
+                    gt.name = it.name
+                    gt.description = it.description
+                    gt.taste = it.taste
+                    gts.add(gt)
+                }
+                _ginTonics.value = gts
+                cacheGinTonics(gts)
+            }
 
-        return withContext(Dispatchers.IO) {
-            var ginTonics = database.getAllGinTonics()
-            ginTonics
-        }
+            override fun onFailure(call: Call<List<GinTonicProperty>>, t: Throwable) {
+                _ginTonics.value = database.getAllGinTonics()
+            }
+        })
+
     }
 
+    private fun cacheGinTonics(gts: MutableList<GinTonic>) {
+
+        gts.forEach {
+            database.insert(it)
+        }
+
+    }
 
 
     private suspend fun getNewestGTFromDatabase(): GinTonic? {

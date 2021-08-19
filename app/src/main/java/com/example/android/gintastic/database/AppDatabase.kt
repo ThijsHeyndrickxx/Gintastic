@@ -23,6 +23,7 @@ abstract class AppDatabase: RoomDatabase() {
                         "gin_tonic_database"
                     )
                         .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
                         .build()
                     INSTANCE = instance
                 }
