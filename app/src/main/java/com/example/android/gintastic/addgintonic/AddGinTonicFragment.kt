@@ -61,7 +61,7 @@ class AddGinTonicFragment : Fragment() {
         binding.addGtButton.setOnClickListener{
             var name: String = binding.newGinTonicName.text.toString()
             var description: String = binding.newGinTonicDescription.text.toString()
-            var taste: String = binding.selectedTaste.text.toString()
+            var taste: String = binding.spinner.selectedItem.toString()
 
             if(!valid(name, taste, description)){
 
@@ -100,21 +100,9 @@ class AddGinTonicFragment : Fragment() {
         var tasteList = viewModel.getTastes()
         val adapter: ArrayAdapter<String> = ArrayAdapter(requireContext(), R.layout.support_simple_spinner_dropdown_item, tasteList)
         binding.spinner.adapter = adapter
-
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                binding.selectedTaste.text = "No taste selected yet!"
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val taste: String = tasteList[position]
-                binding.selectedTaste.text = taste
-            }
+        binding.spinner.prompt="Select taste here..."
 
 
-
-        }
 
 
     }
