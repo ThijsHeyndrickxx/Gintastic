@@ -9,7 +9,7 @@ import com.example.android.gintastic.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val Gallery_REQUEST = 1
+
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

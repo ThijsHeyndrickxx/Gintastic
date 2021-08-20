@@ -3,5 +3,6 @@
     <style name="sub_title_style_1">
         <item name="android:textSize">18sp</item>
         <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textStyle">italic</item>
     </style>
 </resources>

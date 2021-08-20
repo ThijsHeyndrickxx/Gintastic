@@ -11,6 +11,7 @@ class DetailedGinTonicViewModel(val database: GinTonicDao, application: Applicat
     private var viewModelJob = Job()
     val ginTonicId: Long = ginTonicId
     val currentGinTonic= MutableLiveData<GinTonic>()
+    val isFavourite = MutableLiveData<String>()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     override fun onCleared() {

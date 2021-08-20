@@ -9,29 +9,79 @@
             type="com.example.android.gintastic.detailedgintonic.DetailedGinTonicViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gt_detail">
 
-    <TextView
-        android:id="@+id/ginTonicName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{DetailedGinTonicViewModel.currentGinTonic.name}"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="298dp"
+        android:layout_height="523dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/favouriteButton"
+        app:layout_constraintVertical_bias="0.339">
+
+        <TextView
+            android:id="@+id/ginTonicName"
+            style="@style/header_style_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:padding="@dimen/padding_small"
+            android:text="@{DetailedGinTonicViewModel.currentGinTonic.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:padding="@dimen/padding_small"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ginTonicName"/>
+
+        <TextView
+            android:id="@+id/ginTonicTaste"
+            style="@style/sub_title_style_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="@{DetailedGinTonicViewModel.currentGinTonic.taste}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
+
+        <TextView
+            android:id="@+id/ginTonicDescription"
+            style="@style/text_style_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="@{DetailedGinTonicViewModel.currentGinTonic.description}"
+            app:layout_constraintBottom_toTopOf="@id/ginTonicTaste"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ginTonicName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/favouriteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/ginTonicName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:contentDescription="favouriteButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_off"
-        android:contentDescription="favouriteButton"/>
+        app:srcCompat="@android:drawable/btn_star_big_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

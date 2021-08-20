@@ -28,11 +28,11 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="150sp"
-            android:layout_height="18sp"
+            android:layout_width="150dp"
+            android:layout_height="18dp"
             android:background="@drawable/spinner_background"
             android:spinnerMode="dropdown"
-            android:layout_marginStart="10sp"
+            android:layout_marginStart="10dp"
             app:layout_constraintLeft_toRightOf="@id/selectedTasteIndicator"
             app:layout_constraintBottom_toTopOf="@id/newGinTonicDescription" />
 
@@ -47,9 +47,9 @@
 
         <EditText
             android:id="@+id/newGinTonicDescription"
-            android:layout_width="350sp"
-            android:layout_height="200sp"
-            android:layout_margin="10sp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
             android:hint="@string/description_hint"
             android:inputType="text"
             app:layout_constraintBottom_toTopOf="@+id/add_gt_button"

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.navArgs
@@ -39,13 +40,15 @@ class DetailedGinTonicFragment : Fragment() {
     private fun setFavouriteToggle(binding: FragmentDetailedGinTonicBinding, viewModel: DetailedGinTonicViewModel) {
         binding.favouriteButton.setOnClickListener{
             if(isFavouriteChecked){
-                binding.favouriteButton.setImageResource(R.drawable.btn_star_unchecked)
+                binding.favouriteButton.setImageResource(R.drawable.btn_star_big_off)
                 viewModel.toggleFavourite(isChecked = true)
                 isFavouriteChecked = false
+                Toast.makeText(requireActivity(), "Removed from favourites", Toast.LENGTH_SHORT).show()
             } else{
-                binding.favouriteButton.setImageResource(R.drawable.btn_star_checked)
+                binding.favouriteButton.setImageResource(R.drawable.btn_star_big_on)
                 viewModel.toggleFavourite(isChecked = false)
                 isFavouriteChecked = true
+                Toast.makeText(requireActivity(), "Added to favourites", Toast.LENGTH_SHORT).show()
             }
         }
 

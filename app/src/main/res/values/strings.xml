@@ -23,4 +23,5 @@
     <string name="description_hint">Enter the instructions/description here...</string>
     <string name="taste_hint">Select the taste here...</string>
     <string name="Select_taste">"Select taste: "</string>
+    <string name="favourite_title">Here you can find all your favourite gin tonics. You can add gin tonics to the list by clicking the star sign.</string>
 </resources>
