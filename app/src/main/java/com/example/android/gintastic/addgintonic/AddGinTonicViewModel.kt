@@ -27,6 +27,7 @@ class AddGinTonicViewModel (val database: GinTonicDao, application: Application)
         super.onCleared()
         viewModelJob.cancel()
     }
+
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     fun getTastes(): MutableList<String>{

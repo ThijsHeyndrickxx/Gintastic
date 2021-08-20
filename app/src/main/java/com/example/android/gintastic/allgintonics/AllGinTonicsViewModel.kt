@@ -19,7 +19,7 @@ class AllGinTonicsViewModel (val database: GinTonicDao, application: Application
     private val _ginTonics = MutableLiveData<List<GinTonic>>()
     val ginTonics: LiveData<List<GinTonic>>
         get() = _ginTonics
-    val newestGinTonic = MutableLiveData<GinTonic?>()
+
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 

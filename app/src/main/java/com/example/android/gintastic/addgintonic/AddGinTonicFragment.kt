@@ -26,9 +26,6 @@ import com.example.android.gintastic.databinding.FragmentAddGinTonicBinding
 
 class AddGinTonicFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,6 +77,7 @@ class AddGinTonicFragment : Fragment() {
         if(name.isEmpty() || name.isBlank()){
             Toast.makeText(requireActivity(), "Name cannot be blank!", Toast.LENGTH_SHORT).show()
             return false
+
         }
         else if(taste.isEmpty() || taste.isBlank()){
             Toast.makeText(requireActivity(), "Taste cannot be blank!", Toast.LENGTH_SHORT).show()
@@ -102,6 +100,8 @@ class AddGinTonicFragment : Fragment() {
         binding.spinner.prompt="Select taste here..."
 
     }
+
+
 
 
 }
