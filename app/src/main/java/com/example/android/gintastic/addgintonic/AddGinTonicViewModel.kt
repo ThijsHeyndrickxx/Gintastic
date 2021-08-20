@@ -34,19 +34,14 @@ class AddGinTonicViewModel (val database: GinTonicDao, application: Application)
     }
     fun addGinTonic(ginTonic: GinTonic){
         uiScope.launch {
-            add(ginTonic)
-        }
-    }
-    private suspend fun add(ginTonic: GinTonic){
-        withContext(Dispatchers.IO){
-            RetrofitBuilder.apiService.addGinTonic(convertToGinTonicProperty(ginTonic)).enqueue(object: Callback<GinTonicProperty> {
-                override fun onResponse(call: Call<GinTonicProperty>, response: Response<GinTonicProperty>) {
-                    database.insert(ginTonic)
-                }
-                override fun onFailure(call: Call<GinTonicProperty>, t: Throwable) {
+            var deferred =RetrofitBuilder.apiService.addGinTonic(convertToGinTonicProperty(ginTonic))
+            try{
+                deferred.await()
+                database.insert(ginTonic)
+            }catch (t: Throwable){
 
-                }
-            })
+            }
+
         }
     }
 

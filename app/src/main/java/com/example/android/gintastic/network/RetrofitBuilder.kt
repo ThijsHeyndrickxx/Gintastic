@@ -1,4 +1,5 @@
 package com.example.android.gintastic.network
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -20,7 +21,9 @@ object RetrofitBuilder {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+                //for some reason it doesnt work when you use BASE_URL
+            .baseUrl("http://192.168.1.18:45456/api/")
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
